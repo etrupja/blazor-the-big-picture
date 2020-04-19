@@ -1,0 +1,43 @@
+﻿@page "/parent"
+@page "/parent/{firstName}"
+
+@using Data;
+
+<h3>Welcome @firstName</h3>
+<hr />
+<h1>@WelcomeMessage</h1>
+
+<input @bind="CurrentValue" @bind:event="oninput" />
+<span>You entered: @CurrentValue</span>
+
+@*Loading from child component
+<Child FirstName="Ervis" LastName="Trupja"></Child>
+
+@foreach (var child in Children)
+{
+    <Child FirstName=@child.FirstName LastName=@child.LastName></Child>
+}*@
+
+@code {
+    [Parameter]
+    public string firstName { get; set; }
+
+    public string WelcomeMessage { get; set; } = "AspNet Core Blazor App";
+
+    [Parameter]
+    public int CurrentValue { get; set; } = 0;
+
+    //public List<ChildData> Children { get; set; } = new List<ChildData>()
+    //{
+    //    new ChildData()
+    //    {
+    //        FirstName = "First 1",
+    //        LastName = "LastOne"
+    //    },
+    //    new ChildData()
+    //    {
+    //        FirstName = "First 2",
+    //        LastName = "LastTwo"
+    //    }
+    //};
+}
